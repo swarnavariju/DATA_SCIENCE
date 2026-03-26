@@ -1,0 +1,74 @@
+TASK 1: 	Read two integers and print sum, difference, product, and integer division.
+a = int(input("Enter first integer: "))
+   b = int(input("Enter second integer: "))
+print("Sum: ", a + b)
+print("Difference: ", a - b)
+print("Product: ", a * b)
+print("Integer Division: ", a // b)
+c, d = map(int, input("Enter two integers separated by space: ").split())
+print(f"Sum: {c + d}")
+print(f"Difference: {c - d}")
+print(f"Product: {c * d}")
+print(f"Integer Division: {c // d}")
+user_input = input("Enter a mathematical expression: ")
+result = eval(user_input)
+print(f"Answer: {result}")
+
+TASK 2:	Write a function is_even(n) that returns True if n is even, else False.
+
+n = int(input("Enter a number: "))
+def is_even(n):
+    return n % 2 == 0
+print(is_even(n))
+
+
+3.	From a list of integers, create a new list with only even numbers.
+
+size = int(input("Enter Size of Array: "))
+nums = []
+for _ in range(size):
+    nums.append(int(input()))
+print(f"Original array: {nums}")
+nums_even = []
+for i in range(len(nums) - 1):
+    if nums[i] % 2 == 0:
+        int(input(f"Enter element {i+1}: "))
+        nums_even.append(nums[i])
+print(f"Even array elements: {nums_even}")
+
+4. Write a Python program student_marks_analyzer.py that asks the user to enter the number of
+students in a class.Then ask the user to enter the marks (0–100) for each student, one by one,
+and store all the marks so that they can be processed later. After all marks are entered, the
+program should display:
+● The list of all marks entered.      ● The total of all marks.    ● The average marks of the class 
+● The highest and lowest marks in the class.     ● How many students passed (marks ≥ 40).
+● How many students failed (marks < 40).   ● Display the marks in reverse order of entry.
+● Display only those marks that are even numbers.
+
+marks = list(map(int, input("Enter marks: ").split()))
+print("Marks entered: ", marks)
+print(f"Total Marks: {sum(marks)}")
+print(f"Average Marks: {sum(marks)/len(marks)}")
+print(f"Highest Mark: {max(marks)}")
+print(f"Lowest Mark: {min(marks)}")
+pass_count = 0
+for i in range(len(marks)):
+    if marks[i] >= 40:
+        pass_count += 1
+print(f"{pass_count} students passed")
+fail_count = 0
+for i in range(len(marks)):
+    if marks[i] < 40:
+        fail_count += 1
+print(f"{fail_count} students failed")
+pass_c1 = [i for i in marks if i >= 40]
+print(f"{len(pass_c1)} students passed")
+fail_c1 = [i for i in marks if i < 40]
+print(f"{len(fail_c1)} students failed")
+pass_c2 = sum(1 for i in marks if i >= 40)
+print(f"{pass_c2} students passed")
+fail_c2 = sum(1 for i in marks if i < 40)
+print(f"{fail_c2} students failed")
+print(f"Marks in reversed order: {marks[::-1]}")
+even_marks = [i for i in marks if i % 2 == 0]
+print("Even Marks:", even_marks)
