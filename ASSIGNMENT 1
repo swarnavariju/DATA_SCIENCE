@@ -1,0 +1,89 @@
+# Task - 1 : Customer Purchase Decision
+
+import numpy as np
+import matplotlib.pyplot as plt
+possible_values = [0, 1]
+p_purchase = 0.3
+num_customers = 1000
+customer_visits = np.random.choice(possible_values, size=num_customers, p=[1 - p_purchase, p_purchase])
+mean = np.mean(customer_visits)
+variance = np.var(customer_visits)
+print(f"Mean: {mean}")
+print(f"Variance: {variance}")
+plt.hist(customer_visits, bins=[-0.5, 0.5, 1.5], density=True, alpha=0.7, color='yellow', edgecolor='black')
+plt.xticks([0, 1], ['0', '1'])
+plt.title('Distribution of Customer Purchases')
+plt.xlabel('Customer Action')
+plt.ylabel('Probability')
+plt.grid(axis='y', alpha=0.75)
+plt.show()
+
+# Task - 2 : Number of Purchasing Customers in a Fixed Group
+
+from scipy.stats import binom
+n = 50
+p = np.random.random()
+x = np.arange(0, n + 1)
+plt.figure(figsize=(50,10))
+plt.bar(x, pmf, color='lightblue', edgecolor='black')
+plt.title('Probability Mass Function of Purchases')
+plt.xlabel('Number of Purchases')
+plt.ylabel('Probability')
+pmf = binom.pmf(x, n, p)
+plt.xticks(x)
+plt.show()
+mode = x[np.argmax(pmf)]
+print(f"Random probability of purchase: {p:.4f}")
+print(f"Most likely number of purchases: {mode}")
+print(f"Probability of most likely outcome: {pmf[mode]:.4f}")
+print(f"Expected number of purchases: {n * p:.2f}")
+
+# Task - 3 : Checkout Demand Over Time
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import poisson
+lam = 10
+p_8 = poisson.pmf(8, lam)
+print("P(X = 8):", p_8)
+p_more_15 = 1 - poisson.cdf(15, lam)
+print("P(X > 15):", p_more_15)
+x = np.arange(0, 26)
+pmf = poisson.pmf(x, lam)
+plt.figure(figsize=(10, 5))
+plt.bar(x, pmf, color='lightblue', edgecolor='black')
+plt.title('Probability Mass Function of Checkouts')
+plt.xlabel('Number of Checkouts per Hour')
+plt.ylabel('Probability Mass Function')
+plt.xticks(x)
+plt.show()
+
+# Task - 4 : First Successful Promotion Response
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import geom
+p = 0.25
+p_4 = geom.pmf(4, p)
+print("P(first success on 4th interaction):", p_4)
+x = np.arange(1, 11)
+pmf = geom.pmf(x, p)
+plt.stem(x, pmf)
+plt.xlabel("Interaction Number")
+plt.ylabel("Probability")
+plt.title("Geometric Distribution: First Successful Response")
+plt.show()
+
+# Task - 5 : Quality Control – Defective Grocery Items
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import poisson
+lam = 3
+x = np.arange(0, 15)
+pmf = poisson.pmf(x, lam)
+plt.stem(x, pmf)
+plt.xlabel("Number of Defective Items")
+plt.ylabel("Probability")
+plt.title("Poisson Distribution of Defective Items per Day")
+plt.show()
